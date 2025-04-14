@@ -1,11 +1,17 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center h-screen" >
       <h1 className="text-4xl font-bold">
-        Hello World
+        Landing Page
       </h1>
+      <Link href='/login'>
+        <button>login</button>
+      </Link>
+      <Link href='/dashboard'>
+        <button>Dashboard</button>
+      </Link>
     </div>
   );
 }
