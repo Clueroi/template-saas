@@ -5,6 +5,12 @@ import { getFirestore } from 'firebase-admin/firestore'
 // import { getStorage } from 'firebase-admin/storage'
 import "server-only"
 
+if(!process.env.FIREBASE_PRIVATE_KEY){
+  throw new Error("Firebase private key is not defined in environment variables")
+}
+
+const decodedKey = Buffer.from(process.env.FIREBASE_PRIVATE_KEY, 'base64').toString('utf-8')
+
 const firebaseCert = cert({
   projectId: process.env.FIREBASE_PROJECT_ID,
   clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
