@@ -3,5 +3,7 @@
 import { signIn } from "@/lib/auth"
 
 export async function HandleAuth(){
-  await signIn("google")
+  await signIn("google", {
+    redirectTo:"/dashboard",
+  })
 }
