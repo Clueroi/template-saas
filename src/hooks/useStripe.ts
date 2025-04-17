@@ -63,28 +63,28 @@ export function useStripe() {
     }
   }
 
-  // async function handleCreateStripePortal(){
-  //   if (!stripe) return
+  async function handleCreateStripePortal(){
+    if (!stripe) return
 
-  //   try {
-  //     const response = await fetch('/api/stripe/create-portal', {
-  //       method: 'POST',
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //     })
-  //     const data = await response.json()
+    try {
+      const response = await fetch('/api/stripe/create-portal', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
+      const data = await response.json()
 
-  //     window.location.href = data.url
+      window.location.href = data.url
 
-  //   } catch (err) {
+    } catch (err) {
 
-  //   }
-  // }
+    }
+  }
 
   return {
     createPaymentStripeCheckout,
     createSubscriptionStripeCheckout,
-    // handleCreateStripePortal
+    handleCreateStripePortal
   }
 }
