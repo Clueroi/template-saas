@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
       mode: "payment",
       payment_method_types:["card", "boleto"],
       success_url: `${req.headers.get("origin")}/success`,
-      cancel_url: `${req.headers.get("origin")}/cancel`,
+      cancel_url: `${req.headers.get("origin")}/`,
       ...(userEmail ?? {customer_email: userEmail}),
       metadata
     })
@@ -31,6 +31,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ sessionId: session.id }), { status: 200 }
   } catch (err) {
-    console.error(err)
+    return NextResponse.error()
   }
 }
